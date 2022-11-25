@@ -9,15 +9,15 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start'])
 def function_name(message: telebot.types.Message):
-    bot.send_message(message.chat.id, f'Добрый день,\t {message.chat.username}!')
+    bot.send_message(message.chat.id, f'Добрый день,\t {message.chat.first_name}!')
     bot.send_message(message.chat.id, 'Воспользуйтесь подсказками бота /help')
 
 
 @bot.message_handler(commands=['help'])
 def start_help(message: telebot.types.Message):
     text = 'Для начала работы введите текст в следующем формате:\n' \
-           '<Валюта, которую Вы хотите поменять>\n <Валюта, которую хотите купить>\n' \
-           '<Количество переводимой валюты>\n' \
+           '<Валюта, которую хотите поменять>\n <Валюта, которую хотите купить>\n' \
+           '<Количество валюты>\n' \
            'Посмотреть список доступных валют: /values'
     bot.send_message(message.chat.id, text)
 
@@ -35,7 +35,7 @@ def convert(message: telebot.types.Message):
     try:
         values = message.text.split(' ')
         if len(values) > 3:
-            raise ConvertException('Воу-воу! Спокойно, не нужно столько вводить данных!')
+            raise ConvertException('Воу-воу! Спокойно! Не нужно вводить столько данных!\nВведите только 3 параметра!')
 
         if len(values) < 3:
             raise ConvertException('Вы что-то забыли указать!')
