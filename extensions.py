@@ -11,7 +11,7 @@ class ConvertException(Exception):
 
 class CurrencyConverter:
     @staticmethod
-    def currency_convert(origin_cur=str, target_cur=str, amount=str):
+    def currency_convert(origin_cur=str, target_cur=str, amount=int):
         if origin_cur == target_cur:
             raise ConvertException(f'Ну и как Вы себе представляете конвертацию {origin_cur} в {target_cur}?!')
         try:
