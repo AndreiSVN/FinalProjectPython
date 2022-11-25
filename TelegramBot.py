@@ -46,7 +46,7 @@ def convert(message: telebot.types.Message):
     except ConvertException as e:
         bot.reply_to(message, e)
     except Exception as e:
-        bot.reply_to(message, f'Ошибка!\n Не удалось ообработать команду\n {e}')
+        bot.reply_to(message, f'Ошибка!\n Не удалось обработать команду\n {e}')
     else:
         text = f'{amount} {origin_cur} будет\t {round(rate * float(amount))} {target_cur}'
         bot.send_message(message.chat.id, text)
