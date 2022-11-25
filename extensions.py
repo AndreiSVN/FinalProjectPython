@@ -23,7 +23,7 @@ class CurrencyConverter:
         except KeyError:
             raise ConvertException('Эту валюту мы пока не можем конвертировать, но мы над этим работаем!')
         try:
-            amount == float(amount)
+            amount != int(amount)
         except ValueError:
             raise ConvertException('У Вас правда есть монеты?! К сожалению, с мелочью не работаем ')
 
