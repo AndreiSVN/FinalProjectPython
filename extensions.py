@@ -23,9 +23,9 @@ class CurrencyConverter:
         except KeyError:
             raise ConvertException('Эту валюту мы пока не можем конвертировать, но мы над этим работаем!')
         try:
-            amount != int(amount)
+            amount == int(amount)
         except ValueError:
-            raise ConvertException('У Вас правда есть монеты?! К сожалению, с мелочью не работаем ')
+            raise ConvertException('Сумму необходимо ввести цифрами! Кстати, мелочь не принимаем, вводите целое число!')
 
         r = requests.get(
                     f'https://min-api.cryptocompare.com/data/price?fsym={keys[origin_cur]}&tsyms={keys[target_cur]}')
